@@ -1,0 +1,90 @@
+<style>
+  .diet_form {
+    background: #eaf4ff;
+    padding: 10px 30px;
+  }
+
+  form dl dt {
+    width: 200px;
+    height: 40px;
+    padding: 10px 0;
+    line-height: 40px;
+    float: left;
+  }
+
+  form dl dd {
+    padding: 10px 0;
+    margin: 0;
+  }
+
+  .box {
+    box-sizing: border-box;
+    width: 150px !important;
+    height: 40px !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+  }
+
+  .calc-btn {
+    width: 80px;
+    height: 30px;
+    border: 1px solid #333;
+  }
+
+  .calc-btn:hover {
+    cursor: pointer;
+  }
+</style>
+<form class="diet_form">
+  <dl>
+    <dt>だいき税抜(8%)：</dt>
+    <dd><input type="number" class="box" name="d_no_tax_8"></dd>
+    <dt>だいき税抜(10%)：</dt>
+    <dd><input type="number" class="box" name="d_no_tax_10"></dd>
+    <dt>だいき税込：</dt>
+    <dd><input type="number" class="box" name="d_tax"></dd>
+
+    <dt>りち税抜(8%)：</dt>
+    <dd><input type="number" class="box" name="r_no_tax_8"></dd>
+    <dt>りち税抜(10%)：</dt>
+    <dd><input type="number" class="box" name="r_no_tax_10"></dd>
+    <dt>りち税込：</dt>
+    <dd><input type="number" class="box" name="r_tax"></dd>
+
+    <dt>2人合計金額(税込)：</dt>
+    <dd><input type="number" class="box" name="total"></dd>
+
+    <p><input type="button" class="calc-btn"
+        onclick="calc(d_no_tax_8.value, d_no_tax_10.value, r_no_tax_8.value, r_no_tax_10.value, total.value);"
+        value="計算"></p>
+
+    <dt>だいき税込(8%)：</dt>
+    <dd><input id="d_tax_8" class="box" type="text" readonly=""></dd>
+    <dt>だいき税込(10%)：</dt>
+    <dd><input id="d_tax_10" class="box" type="text" readonly=""></dd>
+
+    <dt>りち税込(8%)：</dt>
+    <dd><input id="r_tax_8" class="box" type="text" readonly=""></dd>
+    <dt>りち税込(10%)：</dt>
+    <dd><input id="r_tax_10" class="box" type="text" readonly=""></dd>
+
+    <dt>1人あたり金額(税込)：</dt>
+    <dd><input id="each_total" class="box" type="text" readonly=""></dd>
+    <dt>だいき支払い(税込)：</>
+    <dd><input id="d_total" class="box" type="text" readonly=""></dd>
+    <dt>りち支払い(税込)：</dt>
+    <dd><input id="r_total" class="box" type="text" readonly=""></dd>
+  </dl>
+</form>
+<script>
+  function calc(d_no_tax_8, d_no_tax_10, r_no_tax_8, r_no_tax_10, total) {
+    const d_tax_8_value = document.getElementById('d_tax_8').value = Math.floor(d_no_tax_8 * 1.08);
+    const d_tax_10_value = document.getElementById('d_tax_10').value = Math.floor(d_no_tax_10 * 1.1);
+    const r_tax_8_value = document.getElementById('r_tax_8').value = Math.floor(r_no_tax_8 * 1.08);
+    const r_tax_10_value = document.getElementById('r_tax_10').value = Math.floor(r_no_tax_10 * 1.1);
+    const each_total_value = document.getElementById('each_total').value = Math.floor((total - d_tax_8_value - d_tax_10_value - r_tax_8_value - r_tax_10_value) / 2);
+    const d_total_value = document.getElementById('d_total').value = Math.floor(each_total_value + d_tax_8_value + d_tax_10_value);
+    const r_total_value = document.getElementById('r_total').value = Math.floor(each_total_value + r_tax_8_value + r_tax_10_value);
+
+  }
+</script>
