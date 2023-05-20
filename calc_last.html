@@ -35,56 +35,87 @@
     cursor: pointer;
   }
 </style>
+<meta charset="UTF-8">
 <form class="diet_form">
   <dl>
-    <dt>だいき税抜(8%)：</dt>
-    <dd><input type="number" class="box" name="d_no_tax_8"></dd>
-    <dt>だいき税抜(10%)：</dt>
-    <dd><input type="number" class="box" name="d_no_tax_10"></dd>
-    <dt>だいき税込：</dt>
-    <dd><input type="number" class="box" name="d_tax"></dd>
+    <dt>だ税抜(8%)：</dt>
+    <dd><input type="number" class="box" name="d_no_tax_8_1"></dd>
+    <dt>だ税抜(8%)：</dt>
+    <dd><input type="number" class="box" name="d_no_tax_8_2"></dd>
+    <dt>だ税抜(8%)：</dt>
+    <dd><input type="number" class="box" name="d_no_tax_8_3"></dd>
+    <dt>だ税抜(10%)：</dt>
+    <dd><input type="number" class="box" name="d_no_tax_10_1"></dd>
+    <dt>だ税抜(10%)：</dt>
+    <dd><input type="number" class="box" name="d_no_tax_10_2"></dd>
+    <dt>だ税抜(10%)：</dt>
+    <dd><input type="number" class="box" name="d_no_tax_10_3"></dd>
+    <dt>だ税込：</dt>
+    <dd><input type="number" class="box" name="d_tax_1"></dd>
+    <dt>だ税込：</dt>
+    <dd><input type="number" class="box" name="d_tax_2"></dd>
+    <dt>だ税込：</dt>
+    <dd><input type="number" class="box" name="d_tax_3"></dd>
 
-    <dt>りち税抜(8%)：</dt>
-    <dd><input type="number" class="box" name="r_no_tax_8"></dd>
-    <dt>りち税抜(10%)：</dt>
-    <dd><input type="number" class="box" name="r_no_tax_10"></dd>
-    <dt>りち税込：</dt>
-    <dd><input type="number" class="box" name="r_tax"></dd>
+    <dt>り税抜(8%)：</dt>
+    <dd><input type="number" class="box" name="r_no_tax_8_1"></dd>
+    <dt>り税抜(8%)：</dt>
+    <dd><input type="number" class="box" name="r_no_tax_8_2"></dd>
+    <dt>り税抜(8%)：</dt>
+    <dd><input type="number" class="box" name="r_no_tax_8_3"></dd>
+    <dt>り税抜(10%)：</dt>
+    <dd><input type="number" class="box" name="r_no_tax_10_1"></dd>
+    <dt>り税抜(10%)：</dt>
+    <dd><input type="number" class="box" name="r_no_tax_10_2"></dd>
+    <dt>り税抜(10%)：</dt>
+    <dd><input type="number" class="box" name="r_no_tax_10_3"></dd>
+    <dt>り税込：</dt>
+    <dd><input type="number" class="box" name="r_tax_1"></dd>
+    <dt>り税込：</dt>
+    <dd><input type="number" class="box" name="r_tax_2"></dd>
+    <dt>り税込：</dt>
+    <dd><input type="number" class="box" name="r_tax_3"></dd>
 
     <dt>2人合計金額(税込)：</dt>
     <dd><input type="number" class="box" name="total"></dd>
 
     <p><input type="button" class="calc-btn"
-        onclick="calc(d_no_tax_8.value, d_no_tax_10.value, r_no_tax_8.value, r_no_tax_10.value, total.value);"
+        onclick="calc(d_no_tax_8_1.value, d_no_tax_8_2.value, d_no_tax_8_3.value, d_no_tax_10_1.value, d_no_tax_10_2.value, d_no_tax_10_3.value, r_no_tax_8_1.value, r_no_tax_8_2.value, r_no_tax_8_3.value, r_no_tax_10_1.value, r_no_tax_10_2.value, r_no_tax_10_3.value, total.value);"
         value="計算"></p>
 
-    <dt>だいき税込(8%)：</dt>
+    <dt>だ税込(8%)：</dt>
     <dd><input id="d_tax_8" class="box" type="text" readonly=""></dd>
-    <dt>だいき税込(10%)：</dt>
+    <dt>だ税込(10%)：</dt>
     <dd><input id="d_tax_10" class="box" type="text" readonly=""></dd>
 
-    <dt>りち税込(8%)：</dt>
+    <dt>り税込(8%)：</dt>
     <dd><input id="r_tax_8" class="box" type="text" readonly=""></dd>
-    <dt>りち税込(10%)：</dt>
+    <dt>り税込(10%)：</dt>
     <dd><input id="r_tax_10" class="box" type="text" readonly=""></dd>
 
     <dt>1人あたり金額(税込)：</dt>
     <dd><input id="each_total" class="box" type="text" readonly=""></dd>
-    <dt>だいき支払い(税込)：</>
+    <dt>だ支払い(税込)：</>
     <dd><input id="d_total" class="box" type="text" readonly=""></dd>
-    <dt>りち支払い(税込)：</dt>
+    <dt>り支払い(税込)：</dt>
     <dd><input id="r_total" class="box" type="text" readonly=""></dd>
   </dl>
+
 </form>
 <script>
-  function calc(d_no_tax_8, d_no_tax_10, r_no_tax_8, r_no_tax_10, total) {
-    const d_tax_8_value = document.getElementById('d_tax_8').value = Math.floor(d_no_tax_8 * 1.08);
-    const d_tax_10_value = document.getElementById('d_tax_10').value = Math.floor(d_no_tax_10 * 1.1);
-    const r_tax_8_value = document.getElementById('r_tax_8').value = Math.floor(r_no_tax_8 * 1.08);
-    const r_tax_10_value = document.getElementById('r_tax_10').value = Math.floor(r_no_tax_10 * 1.1);
+  function calc(d_no_tax_8_1, d_no_tax_8_2, d_no_tax_8_3, d_no_tax_10_1, d_no_tax_10_2, d_no_tax_10_3, r_no_tax_8_1, r_no_tax_8_2, r_no_tax_8_3, r_no_tax_10_1, r_no_tax_10_2, r_no_tax_10_3, total) {
+    const d_tax_8_value = document.getElementById('d_tax_8').value = Math.floor((d_no_tax_8_1 + d_no_tax_8_2 + d_no_tax_8_3) * 1.08);
+    const d_tax_10_value = document.getElementById('d_tax_10').value = Math.floor((d_no_tax_10_1 + d_no_tax_10_2 + d_no_tax_10_3) * 1.1);
+    const r_tax_8_value = document.getElementById('r_tax_8').value = Math.floor((r_no_tax_8_1 + r_no_tax_8_2 + r_no_tax_8_3) * 1.08);
+    const r_tax_10_value = document.getElementById('r_tax_10').value = Math.floor((r_no_tax_10_1 + r_no_tax_10_2 + r_no_tax_10_3) * 1.1);
+
     const each_total_value = document.getElementById('each_total').value = Math.floor((total - d_tax_8_value - d_tax_10_value - r_tax_8_value - r_tax_10_value) / 2);
+
     const d_total_value = document.getElementById('d_total').value = Math.floor(each_total_value + d_tax_8_value + d_tax_10_value);
     const r_total_value = document.getElementById('r_total').value = Math.floor(each_total_value + r_tax_8_value + r_tax_10_value);
 
+    //function total(tax_1, tax_2, tax_3){
+    //const tax_total = tax_1 + tax_2 + tax_3
+    //}
   }
 </script>
